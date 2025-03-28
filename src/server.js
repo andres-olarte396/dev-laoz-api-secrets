@@ -25,7 +25,7 @@ app.use('/api', secretRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 const PORT = process.env.PORT || 3501;
-app.listen(PORT, () => {
+tlsMiddleware.listen(PORT, () => {
   console.log(`Servidor de secretos corriendo en el puerto ${PORT}`);
   console.log(`Documentación disponible en https://localhost:${PORT}/api-docs`);
 });
