@@ -65,4 +65,10 @@ router.post('/secrets', ipRestrictionMiddleware, createSecret);
  */
 router.post('/secrets/:app', ipRestrictionMiddleware, getSecret);
 
+// Healthcheck endpoint para Docker (sin restricción de IP)
+router.get('/health', (req, res) => {
+    res.status(200).json({ status: 'healthy', service: 'api-secrets' });
+});
+
 module.exports = router;
+
