@@ -1,7 +1,9 @@
 const fs = require('fs');
-const https = require('https');
 
-const cert = fs.readFileSync(process.env.TLS_CERT_PATH);
-const key = fs.readFileSync(process.env.TLS_KEY_PATH);
+const certPath = process.env.CERT_PATH || './keys/cert.pem';
+const keyPath = process.env.KEY_PATH || './keys/key.pem';
 
-module.exports = https.createServer({ cert, key });
+const cert = fs.readFileSync(certPath);
+const key = fs.readFileSync(keyPath);
+
+module.exports = { cert, key };
